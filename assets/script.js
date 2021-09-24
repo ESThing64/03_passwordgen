@@ -1,3 +1,10 @@
+let pwdLength = 0;
+let useUppercase = false;
+let useLowercase = false;
+let useNumbers = false;
+let useSpecChar = false;
+let pwdLengthNumber = 0;
+
 
 
 
@@ -8,21 +15,21 @@
 //https://codewithmark.com/easily-generate-random-alphanumeric-string-in-javascript#:~:text=If%20you%20are%20looking%20to%20generate%20random%20alphanumeric,accept%20a%20parameter%20range%20from%202%20to%2036.
 //I want the code for 97-122 a-z, There are 26 letters so i just add 97
 //https://www.w3schools.com/html/html_charset.asp for referace of chars
-function getLowerCase(){
+function getLowerCase() {
 
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 
 }
 
 //Uppercase is from 65-90
-function getUpperCase(){
+function getUpperCase() {
 
   return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 
 }
 
 // there are not 26 letters. There are a total of 10 digits. 0 starts at 48 so we add 48
-function getNumber(){
+function getNumber() {
 
   return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 
@@ -30,19 +37,19 @@ function getNumber(){
 
 
 //there are some special charaters from 33-47 there are 15, so multiply by 15 and add 33 because they start at 33 
-function getSpecChar(){
+function getSpecChar() {
 
   return String.fromCharCode(Math.floor(Math.random() * 15) + 33);
 
 }
- 
+
 
 let theRandomizer = {
   number: getNumber,
   special: getSpecChar,
   upper: getUpperCase,
   lower: getLowerCase,
- 
+
 
 }
 
@@ -93,7 +100,8 @@ var resultId = document.querySelector("#password");
 // Add event listener to generate button
 generateBtn.addEventListener("click", startGen);
 
-function startGen(){
+//when button is press start stuff the pop up for the user to full in proprites for the password.
+function startGen() {
   let pwdLength = prompt("Enter the lengeth of your password (Between 8 - 128 Characters", " ")
   let useUppercase = confirm("Would you like to use uppercase?");
   let useLowercase = confirm("Would you like to use lowercase?");
@@ -102,60 +110,46 @@ function startGen(){
   // change sting to number
   let pwdLengthNumber = +pwdLength
 
-  // console.log("After button: ", pwdLength, useUppercase, useLowercase,useNumbers, useSpecChar)
-  // console.log(typeof pwdLengthNumber)
+
+  console.log(typeof pwdLengthNumber)
   resultId.innerHTML = genPassword(pwdLengthNumber, useLowercase, useNumbers, useLowercase)
 
-  }
+}
 //gen password function
 //starts the password variable, and loop through the startGen function to
 
 // get each type of charcter and return it to the #password
-function genPassword(number, symbol, upper, lower, length){
+function genPassword(number, symbol, upper, lower, length) {
 
   //adde curly brackets to make things into an object.
- let charArray = [{number}, {symbol}, {upper}, {lower}]
+  let charArray = [{ number }, { symbol }, { upper }, { lower }].filter(
+    option => Object.values(option)[0]
+  )
 
- //https://stackoverflow.com/questions/30570923/remove-false-values-in-object
- var result = Object.keys(charArray).filter(function(x){
-  return charArray[x] !== false;
- });
- }
+  if (charArray[0] === undefined){
+    return "You gotta put in something man."
+  }
+console.log(pwdLengthNumber)
+  if (pwdLengthNumber < 8){
+    return "Man... It has to be 8 characters or more..."
+  }
+//https://stackoverflow.com/questions/44025984/how-to-filter-an-object-with-its-values-in-es6
 
-//  var myObj={105:true,183:false,108:true,106:false};
 
-//  var result = Object.keys(myObj).filter(function(x) { 
-//      return myObj[x] !== false; 
-//  });
- // result = ["105", "108"]
+  //add a loop take away any flase boolean form the array
+  // for (let i = 0; i < charArray.length; i++) {
+  //   if (charArray[i] = false) {
+  //     charArray.splice[i]
+  //   }
 
-console.log(charArray)
+  // }
 
-//add a loop take away any flase boolean form the array
- for (let i = charArray.length -1; i >= 0; i--) {
-        if (charArray[i] == "false") {
-          charArray.splice(i, 1);
-          return charArray
-          console.log("heyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
-         
-         } 
+  console.log(charArray)
 
-   
-   
-   
- }
+}
 
 
 
-
-  let pwdLength = 0;
-  let useUppercase = false;
-  let useLowercase = false;
-  let useNumbers = false;
-  let useSpecChar = false;
- 
-  
-  
 
 
 //when i click the button, i need a window prompt method
