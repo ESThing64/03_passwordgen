@@ -34,19 +34,7 @@ function getSpecChar() {
 var generateBtn = document.querySelector("#generate");
 var resultId = document.querySelector("#password");
 
-// const genOutPut = document.getElementById("password")
-// const useUppercase = document.getElementById("useUppercase")
-// const useLowercase = document.getElementById("useLowercase")
-// const useNumbers = document.getElementById("useNumbers")
-// const useSpecChar = document.getElementById("useSpecChar")
-//                    do i still need this?
-// Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-//   passwordText.value = password;
-// }
-//  event listener --- calls function startgen()
+
 generateBtn.addEventListener("click", startGen);
 //when i click the button, i need a window prompt method
 //ask for input on these things
@@ -93,28 +81,5 @@ function startGen() {
   
   resultId.innerHTML = password
 }
-// pwdLengthNumber, useUppercase, useNumbers, useLowercase, useSpecChar
-//gen password function
-//starts the password variable, and loop through the startGen function to
-// get each type of charcter and return it to the #password
-// function genPassword() {
-  //adde curly brackets to make things into an object. I NEED TO ADD TO THIS
-  // let charArray = [{ pwdLengthNumber }, { useUppercase }, { useNumbers }, { useLowercase }, {useSpecChar}]
-  // .filter(
-  //   option => Object.values(option)[0]
-  // )
-  // console.log("in the genpassword function", charArray)
-  // if (charArray[1] === undefined) {
-  //   return "You gotta put in something man."
-  // }
-  // if (pwdLengthNumber < 8) {
-  //   return "Man... It has to be 8 characters or more..."
-  // }
-  // if (pwdLengthNumber > 128) {
-  //   return "Wayyyyy too much man"
-  // }
 
-  // console.log(charArray)
-
-  
 
